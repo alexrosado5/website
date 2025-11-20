@@ -12,7 +12,7 @@ export default function ComingSoonPage() {
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>
-          🚧 Coming Soon
+          Coming Soon
         </h1>
   
         <p style={{ fontSize: "1.2rem", opacity: 0.8, maxWidth: "600px" }}>

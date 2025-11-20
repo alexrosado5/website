@@ -1,13 +1,13 @@
 const siteData = {
   meta: {
-    baseURL: "https://umutbayraktar.vercel.app",
+    baseURL: "https://pixelshieldagency.com",
     keywords: [
-      "Umut Bayraktar",
-      "CodeShare",
-      "Full-stack developer",
-      "Next.js",
-      "Discord bots",
-      "Digital marketplace",
+      "PixelShield Agency",
+      "Plugins",
+      "IA",
+      "Web development",
+      "Desarrollo digital",
+      "Chatbot",
     ],
   },
   person: {
@@ -18,7 +18,7 @@ const siteData = {
     avatar: "/images/avatar.png",
     email: "pixelshieldagency@gmail.com",
     phone: "+34 696109481",
-    website: "https://umutbayraktar.vercel.app",
+    website: "https://pixelshieldagency.com",
     timezone: "Europe/Spain",
     address: "Barcelona, Spain",
     languages: ["Spanish", "English", "Catalan"],
@@ -31,7 +31,7 @@ const siteData = {
       <>
         <strong>PixelShield Agency</strong> develops AI-powered web plugins, 
         enhances website performance, and provides reliable 24/7 maintenance,
-        with plans to expand into new pcustom plugins for all users.
+        with plans to expand into new custom plugins for all users.
       </>
     ),
     featured: {
