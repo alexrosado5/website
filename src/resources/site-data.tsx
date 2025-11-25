@@ -5,7 +5,6 @@ const siteData = {
       "PixelShield Agency",
       "Plugins",
       "IA",
-      "Web development",
       "Desarrollo digital",
       "Chatbot",
     ],
@@ -37,7 +36,7 @@ const siteData = {
     featured: {
       label: "Automation & Maintenance",
       href: "https://owasp.org/www-project-top-ten/",
-      badge: "Web Enhancement Studio",
+      badge: "Web Enhancement Studi",
     },
     ctaPrimary: {
       label: "Explore CodeShare",
