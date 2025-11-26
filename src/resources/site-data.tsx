@@ -36,7 +36,7 @@ const siteData = {
     featured: {
       label: "Automation & Maintenance",
       href: "https://owasp.org/www-project-top-ten/",
-      badge: "Web Enhancement Studi",
+      badge: "Web Enhancement Studio",
     },
     ctaPrimary: {
       label: "Explore CodeShare",
@@ -59,7 +59,6 @@ const siteData = {
     description: "Shipping notes from CodeShare, Beatra, and creator studio automations.",
   },
   social: [
-    { name: "LinkedIn", icon: "linkedin", link: "https://linkedin.com/in/umutxyp" },
     { name: "Twitter", icon: "twitter", link: "https://twitter.com/devbayraktar" },
     { name: "Instagram", icon: "instagram", link: "https://instagram.com/umutxyp" },
     { name: "YouTube", icon: "youtube", link: "https://youtube.com/@umutxyp" },
