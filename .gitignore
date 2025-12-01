@@ -1,19 +1,33 @@
-# Next.js build output
-.next/
-out/
-dist/
-build/
-
-# Node modules
-node_modules/
+# Next.js build folders
+/.next
+/out
+/node_modules
+/.vercel
 
 # Environment variables
 .env
 .env.local
 .env.*.local
 
+# Supabase
+supabase/config.toml
+supabase/.branches
+supabase/.temp
+supabase/.status
+
+# Service account & secrets
+*service*.json
+*service*key*.json
+*account*.json
+*secret*.json
+*.pem
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
