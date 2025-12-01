@@ -113,7 +113,7 @@ const work: Work = {
 
 const gallery: Gallery = {
   path: "/gallery",
-  label: "Gallery",
+  label: "Portal",
   title: `Product gallery - ${person.name}`,
   description: "Screens from CodeShare, Beatra, Vip Transfer Turkey, and DNZ Geri Dönüşüm.",
   images: siteData.gallery.map((src, index) => ({

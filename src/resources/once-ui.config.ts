@@ -22,7 +22,8 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/blog": false,
-  "/gallery": false,
+  // Enable the gallery route so that the client portal is reachable.
+  "/gallery": true,
   "/github": false,
 };
 

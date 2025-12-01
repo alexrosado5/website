@@ -1,5 +1,5 @@
 import { Flex, Meta, Schema } from "@once-ui-system/core";
-import GalleryView from "@/components/gallery/GalleryView";
+import ClientPortal from "@/components/portal/ClientPortal";
 import { baseURL, gallery, person } from "@/resources";
 
 export async function generateMetadata() {
@@ -28,7 +28,11 @@ export default function Gallery() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <GalleryView />
+      {/* The gallery page has been repurposed as a client portal. Instead of
+       displaying a masonry of images, users are prompted to log in with
+       their email and a password assigned to them. After authenticating
+       they can view their purchases and manage active payments. */}
+      <ClientPortal />
     </Flex>
   );
 }
