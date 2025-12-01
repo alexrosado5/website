@@ -1,0 +1,12 @@
+[
+  {
+    "email": "alexrosadorodriguez5@gmail.com",
+    "password": "admin1",
+    "authorized": true,
+    "name": "Prueba",
+    "billingAddress": "Gran Via de Lluis Companys, 157\n08330 Barcelona B ES",
+    "phoneNumber": "696 10 94 81",
+    "purchases": [],
+    "payments": []
+  }
+]
