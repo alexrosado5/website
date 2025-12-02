@@ -254,21 +254,18 @@ export default function ClientPortal() {
                   placeholder="Nombre"
                   value={editName}
                   onChange={(e: any) => setEditName(e.target.value)}
-                  fillWidth
                 />
                 <Input
                   type="text"
                   placeholder="Dirección"
                   value={editAddress}
                   onChange={(e: any) => setEditAddress(e.target.value)}
-                  fillWidth
                 />
                 <Input
                   type="tel"
                   placeholder="Teléfono"
                   value={editPhone}
                   onChange={(e: any) => setEditPhone(e.target.value)}
-                  fillWidth
                 />
                 <Row gap="8">
                   <Button
@@ -391,7 +388,6 @@ export default function ClientPortal() {
               value={email}
               onChange={(e: any) => setEmail(e.target.value)}
               required
-              fillWidth
             />
             <Input
               type="password"
@@ -399,7 +395,6 @@ export default function ClientPortal() {
               value={password}
               onChange={(e: any) => setPassword(e.target.value)}
               required
-              fillWidth
             />
             {error && (
               <Text onBackground="accent-strong" align="center">
