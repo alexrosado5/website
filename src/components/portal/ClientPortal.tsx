@@ -164,7 +164,10 @@ export default function ClientPortal() {
                     >
                       {p.description}
                     </Text>
-                    <Text variant="caption">{p.date}</Text>
+                    {/* Use body-default-xs variant for caption-like text and neutral-weak color */}
+                    <Text variant="body-default-xs" onBackground="neutral-weak">
+                      {p.date}
+                    </Text>
                   </Column>
                   <Column style={{ alignItems: "flex-end" }}>
                     <Text
@@ -173,7 +176,10 @@ export default function ClientPortal() {
                     >
                       {p.amount.toFixed(2)} €
                     </Text>
-                    <Text variant="caption">{p.status}</Text>
+                    {/* Replace deprecated caption variant with body-default-xs and a weak neutral color */}
+                    <Text variant="body-default-xs" onBackground="neutral-weak">
+                      {p.status}
+                    </Text>
                     {p.status !== "cancelado" && (
                       <Button
                         variant="secondary"
