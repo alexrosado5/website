@@ -250,18 +250,21 @@ export default function ClientPortal() {
             ) : (
               <>
                 <Input
+                  id="edit-name"
                   type="text"
                   placeholder="Nombre"
                   value={editName}
                   onChange={(e: any) => setEditName(e.target.value)}
                 />
                 <Input
+                  id="edit-address"
                   type="text"
                   placeholder="Dirección"
                   value={editAddress}
                   onChange={(e: any) => setEditAddress(e.target.value)}
                 />
                 <Input
+                  id="edit-phone"
                   type="tel"
                   placeholder="Teléfono"
                   value={editPhone}
@@ -383,6 +386,7 @@ export default function ClientPortal() {
         <form onSubmit={handleLogin}>
           <Column gap="16" fillWidth>
             <Input
+              id="login-email"
               type="email"
               placeholder="Correo de Gmail"
               value={email}
@@ -390,6 +394,7 @@ export default function ClientPortal() {
               required
             />
             <Input
+              id="login-password"
               type="password"
               placeholder="Contraseña"
               value={password}
