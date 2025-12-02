@@ -1,5 +1,12 @@
 "use client";
 
+// Updated ClientPortal component to use Once UI Core typography variants that
+// are supported in the latest version of the library.  The former variants
+// like `body-strong` and `heading-strong-xl` were removed in favor of size‐
+// specific defaults (e.g. `body-default-s`, `heading-default-xl`).  To
+// preserve the bold weight for certain fields we also supply a custom
+// `fontWeight` style where appropriate.
+
 import React, { useState } from "react";
 import {
   Column,
@@ -113,7 +120,7 @@ export default function ClientPortal() {
             padding: "32px",
           }}
         >
-          <Text variant="heading-strong-xl" marginBottom="32">
+          <Text variant="heading-default-xl" marginBottom="32">
             Portal de cliente
           </Text>
           <Button
@@ -135,9 +142,9 @@ export default function ClientPortal() {
         >
           {/* Payment method / subscriptions section */}
           <Column gap="16">
-            <Text variant="heading-strong-xl">Método de pago</Text>
+            <Text variant="heading-default-xl">Método de pago</Text>
             {client.payments.length === 0 ? (
-              <Text>Sin método de pago.</Text>
+              <Text>No hay método de pago.</Text>
             ) : (
               client.payments.map((p, idx) => (
                 <Row
@@ -150,11 +157,22 @@ export default function ClientPortal() {
                   }}
                 >
                   <Column>
-                    <Text variant="body-strong">{p.description}</Text>
+                    {/* Use body-default-s for small text and apply bold weight manually */}
+                    <Text
+                      variant="body-default-s"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      {p.description}
+                    </Text>
                     <Text variant="caption">{p.date}</Text>
                   </Column>
                   <Column style={{ alignItems: "flex-end" }}>
-                    <Text variant="body-strong">{p.amount.toFixed(2)} €</Text>
+                    <Text
+                      variant="body-default-s"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      {p.amount.toFixed(2)} €
+                    </Text>
                     <Text variant="caption">{p.status}</Text>
                     {p.status !== "cancelado" && (
                       <Button
@@ -174,24 +192,39 @@ export default function ClientPortal() {
 
           {/* Billing information section */}
           <Column gap="16">
-            <Text variant="heading-strong-xl">Información de facturación</Text>
+            <Text variant="heading-default-xl">Información de facturación</Text>
             {!editing ? (
               <>
                 {client.name && (
                   <Row style={{ marginBottom: "4px" }}>
-                    <Text variant="body-strong" style={{ width: "120px" }}>Nombre</Text>
+                    <Text
+                      variant="body-default-s"
+                      style={{ width: "120px", fontWeight: "bold" }}
+                    >
+                      Nombre
+                    </Text>
                     <Text>{client.name}</Text>
                   </Row>
                 )}
                 {client.billingAddress && (
                   <Row style={{ marginBottom: "4px" }}>
-                    <Text variant="body-strong" style={{ width: "120px" }}>Dirección</Text>
+                    <Text
+                      variant="body-default-s"
+                      style={{ width: "120px", fontWeight: "bold" }}
+                    >
+                      Dirección
+                    </Text>
                     <Text>{client.billingAddress}</Text>
                   </Row>
                 )}
                 {client.phoneNumber && (
                   <Row style={{ marginBottom: "4px" }}>
-                    <Text variant="body-strong" style={{ width: "120px" }}>Teléfono</Text>
+                    <Text
+                      variant="body-default-s"
+                      style={{ width: "120px", fontWeight: "bold" }}
+                    >
+                      Teléfono
+                    </Text>
                     <Text>{client.phoneNumber}</Text>
                   </Row>
                 )}
@@ -282,7 +315,7 @@ export default function ClientPortal() {
 
           {/* Invoice / purchase history section */}
           <Column gap="16">
-            <Text variant="heading-strong-xl">Historial de compras</Text>
+            <Text variant="heading-default-xl">Historial de compras</Text>
             {client.purchases.length === 0 ? (
               <Text>No hay compras.</Text>
             ) : (
@@ -295,7 +328,12 @@ export default function ClientPortal() {
                   }}
                 >
                   <thead>
-                    <tr style={{ borderBottom: "1px solid var(--neutral-alpha-medium)", textAlign: "left" }}>
+                    <tr
+                      style={{
+                        borderBottom: "1px solid var(--neutral-alpha-medium)",
+                        textAlign: "left",
+                      }}
+                    >
                       <th style={{ padding: "8px" }}>ID</th>
                       <th style={{ padding: "8px" }}>Fecha</th>
                       <th style={{ padding: "8px" }}>Artículo</th>
@@ -336,7 +374,7 @@ export default function ClientPortal() {
   return (
     <Flex justify="center" align="center" paddingTop="32">
       <Column gap="16" maxWidth="s" fillWidth>
-        <Text variant="heading-strong-xl" align="center">
+        <Text variant="heading-default-xl" align="center">
           Portal para clientes
         </Text>
         <form onSubmit={handleLogin}>
