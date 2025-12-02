@@ -378,7 +378,8 @@ export default function ClientPortal() {
 
   // Login form
   return (
-    <Flex justify="center" align="center" paddingTop="32">
+    {/* Use horizontal and vertical props instead of deprecated justify/align on Flex */}
+    <Flex horizontal="center" vertical="center" paddingTop="32">
       <Column gap="16" maxWidth="s" fillWidth>
         <Text variant="heading-default-xl" align="center">
           Portal para clientes
