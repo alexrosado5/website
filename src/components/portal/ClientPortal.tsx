@@ -376,43 +376,48 @@ export default function ClientPortal() {
     );
   }
 
-  // Login form
-  return (
-    {/* Use horizontal and vertical props instead of deprecated justify/align on Flex */}
-    <Flex horizontal="center" vertical="center" paddingTop="32">
-      <Column gap="16" maxWidth="s" fillWidth>
-        <Text variant="heading-default-xl" align="center">
-          Portal para clientes
-        </Text>
-        <form onSubmit={handleLogin}>
-          <Column gap="16" fillWidth>
-            <Input
-              id="login-email"
-              type="email"
-              placeholder="Correo de Gmail"
-              value={email}
-              onChange={(e: any) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              id="login-password"
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e: any) => setPassword(e.target.value)}
-              required
-            />
-            {error && (
-              <Text onBackground="accent-strong" align="center">
-                {error}
-              </Text>
-            )}
-            <Button type="submit" size="l">
-              Acceder
-            </Button>
-          </Column>
-        </form>
-      </Column>
-    </Flex>
-  );
-}
+// Login form
+return (
+  <Flex horizontal="center" vertical="center" paddingTop="32">
+    <Column gap="16" maxWidth="s" fillWidth>
+      <Text variant="heading-default-xl" align="center">
+        Portal para clientes
+      </Text>
+
+      <form onSubmit={handleLogin}>
+        <Column gap="16" fillWidth>
+
+          <Input
+            id="login-email"
+            type="email"
+            placeholder="Correo de Gmail"
+            value={email}
+            onChange={(e: any) => setEmail(e.target.value)}
+            required
+          />
+
+          <Input
+            id="login-password"
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e: any) => setPassword(e.target.value)}
+            required
+          />
+
+          {error && (
+            <Text onBackground="accent-strong" align="center">
+              {error}
+            </Text>
+          )}
+
+          <Button type="submit" size="l">
+            Acceder
+          </Button>
+        </Column>
+      </form>
+
+    </Column>
+  </Flex>
+);
+
