@@ -386,7 +386,6 @@ return (
 
       <form onSubmit={handleLogin}>
         <Column gap="16" fillWidth>
-
           <Input
             id="login-email"
             type="email"
@@ -416,8 +415,7 @@ return (
           </Button>
         </Column>
       </form>
-
     </Column>
   </Flex>
 );
-
+}
