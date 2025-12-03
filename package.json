@@ -19,7 +19,7 @@
     "googleapis": "^166.0.0",
     "gray-matter": "^4.0.3",
     "lint-staged": "^16.1.5",
-    "next": "^15.3.1",
+    "next": "^15.3.6",
     "next-mdx-remote": "^5.0.0",
     "postgres": "^3.4.7",
     "react": "19.0.0",
