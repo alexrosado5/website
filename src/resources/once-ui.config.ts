@@ -196,13 +196,9 @@ const schema: SchemaConfig = {
 
 // social links
 const sameAs: SameAsConfig = {
-  instagram: "https://instagram.com/umutxyp",
-  linkedin: "https://linkedin.com/in/umutxyp",
-  github: "https://github.com/umutxyp",
-  twitter: "https://twitter.com/devbayraktar",
-  youtube: "https://youtube.com/@umutxyp",
-  discord: "https://discord.gg/NrkMaPRc73",
-  telegram: "https://t.me/umutxyp",
+  instagram: "https://www.instagram.com/pixelshield_agency/",
+  twitter: "https://x.com/PixelSh_Agenc",
+  youtube: "https://youtube.com/@PixelShieldAgency",
 };
 
 // social sharing configuration for blog posts
@@ -210,7 +206,7 @@ const socialSharing: SocialSharingConfig = {
   display: true,
   platforms: {
     x: true,
-    linkedin: true,
+    linkedin: false,
     facebook: false,
     pinterest: false,
     whatsapp: false,
