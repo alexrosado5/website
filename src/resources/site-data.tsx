@@ -60,7 +60,7 @@ const siteData = {
   social: [
     { name: "Twitter", icon: "twitter", link: "https://x.com/PixelSh_Agency" },
     { name: "Instagram", icon: "instagram", link: "https://www.instagram.com/pixelshield_agency/" },
-    { name: "YouTube", icon: "youtube", link: "www.youtube.com/@PixelShieldAgency" },
+    { name: "YouTube", icon: "youtube", link: "https://youtube.com/@PixelShieldAgency" },
     { name: "Email", icon: "email", link: "mailto:pixelshieldagency@gmail.com" },
   ],
   about: {
