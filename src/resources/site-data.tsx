@@ -21,10 +21,10 @@ const siteData = {
     address: "Barcelona, Spain",
     languages: ["Spanish", "English", "Catalan"],
     biography:
-      "Founder of Pixel Shield Agency, specializing in custom plugins, 24/7 maintenance and innovative web improvement systems.",
+      "Fundador de Pixel Shield Agency, especializada en plugins personalizados, mantenimiento 24/7 y sistemas innovadores de mejora web.",
   },
   hero: {
-    headline: "Designing Plugins and high-impact digital products for websites",
+    headline: "Diseño de complementos y productos digitales de alto impacto para sitios web.",
     subline: (
       <>
         <strong>PixelShield Agency</strong> develops AI-powered web plugins, 
@@ -33,9 +33,9 @@ const siteData = {
       </>
     ),
     featured: {
-      label: "Automation & Maintenance",
+      label: "Automatización y Mantenimiento",
       href: "https://owasp.org/www-project-top-ten/",
-      badge: "Web Enhancement Studio",
+      badge: "Estudio de Mejora Web",
     },
     ctaPrimary: {
       label: "Explore CodeShare",
@@ -66,15 +66,15 @@ const siteData = {
   about: {
     introTitle: "Who We Are",
     introDescription:
-      "PixelShield Agency is a tech-driven team creating custom AI-powered plugins, improving website performance and providing reliable 24/7 maintenance. Founded by two Computer Engineer students, we combine innovation, efficiency and modern web solutions to help business enhance and secure their online presence.",
+      "PixelShield Agency es un equipo impulsado por la tecnología que crea complementos personalizados con IA, mejora el rendimiento de sitios web y ofrece un mantenimiento confiable 24/7. Fundada por dos estudiantes de Ingeniería Informática, combinamos innovación, eficiencia y soluciones web modernas para ayudar a las empresas a mejorar y asegurar su presencia en línea.",
     experiences: [
       {
         company: "EntuPunto",
-        timeframe: "2025 - Present",
-        role: "External Tech Provider",
+        timeframe: "2025 - 2025",
+        role: "Proveedor Tecnológico Externo",
         achievements: [
-          "Designed custom plugins to improve their websites flow and automate key processes , verification workflows and reliable 24/7 maintenance.",
-          "Oversee AI-assisted workflows, support and automation.",
+          "Diseñamos complementos personalizados para mejorar el flujo de sus sitios web y automatizar procesos clave, flujos de verificación y un mantenimiento confiable 24/7.",
+          "Supervisar flujos de trabajo asistidos por IA, soporte y automatización.",
         ],
         images: [],
         link: "https://entupunto.com/",
@@ -84,12 +84,12 @@ const siteData = {
       {
         name: "Alex Rosado Rodriguez",
         description:
-          "Computer Engineering student and Founder of PixelShield Agency, specializing in custom plugin development, AI-powered solutions, and continuous web improvement.",
+          "Estudiante de Ingeniería Informática y Fundador de PixelShield Agency, especializado en el desarrollo de complementos personalizados, soluciones impulsadas por IA y mejora continua de sitios web.",
       },
       {
         name: "Ferran Calmaestra Feixa",
         description:
-          "Computer Engineer student and Cofounder of PixelShield Agency, focused on custom plugin development, AI-powered tools, and continuous web enhancement",
+          "Estudiante de Ingeniería Informática y Cofundador de PixelShield Agency, enfocado en el desarrollo de complementos personalizados, herramientas impulsadas por IA y la mejora continua de sitios web.",
       },
     ],
     technical: [
