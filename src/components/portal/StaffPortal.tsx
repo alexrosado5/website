@@ -21,22 +21,27 @@ export default function StaffPortal() {
   const [password, setPassword] = useState("");
   const [staff, setStaff] = useState<any | null>(null);
   const [clients, setClients] = useState<AdminClientRecord[]>([]);
+  const [selectedClient, setSelectedClient] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<"info" | "plan">("info");
   const [error, setError] = useState<string | null>(null);
 
   // Manejo de login
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
+
     try {
       const res = await fetch("/api/staff-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.message ?? "Credenciales incorrectas");
       }
+
       const data = await res.json();
       setStaff(data.staff);
       setEmail("");
@@ -47,7 +52,7 @@ export default function StaffPortal() {
     }
   };
 
-  // Cuando el trabajador está autenticado, cargamos todos los clientes administrativos
+  // Cargar clientes
   useEffect(() => {
     if (!staff) return;
     const fetchClients = async () => {
@@ -64,7 +69,7 @@ export default function StaffPortal() {
     fetchClients();
   }, [staff]);
 
-  // Vista de login para empleados
+  // Si no hay login → mostrar login
   if (!staff) {
     return (
       <Flex horizontal="center" vertical="center" paddingTop="32">
@@ -72,6 +77,7 @@ export default function StaffPortal() {
           <Text variant="heading-default-xl" align="center">
             Portal administrativo
           </Text>
+
           <form onSubmit={handleLogin}>
             <Column gap="16" fillWidth>
               <Input
@@ -82,6 +88,7 @@ export default function StaffPortal() {
                 onChange={(e: any) => setEmail(e.target.value)}
                 required
               />
+
               <Input
                 id="staff-login-password"
                 type="password"
@@ -90,11 +97,13 @@ export default function StaffPortal() {
                 onChange={(e: any) => setPassword(e.target.value)}
                 required
               />
+
               {error && (
                 <Text onBackground="accent-strong" align="center">
                   {error}
                 </Text>
               )}
+
               <Button type="submit" size="l">
                 Acceder
               </Button>
@@ -105,10 +114,9 @@ export default function StaffPortal() {
     );
   }
 
-  // Vista principal con lista de clientes administrativos
   return (
     <Row style={{ minHeight: "80vh" }}>
-      {/* Barra lateral */}
+      {/* PANEL LATERAL */}
       <Column
         style={{
           flexBasis: "25%",
@@ -116,83 +124,129 @@ export default function StaffPortal() {
           borderRight: "1px solid var(--neutral-alpha-medium)",
           padding: "32px",
         }}
+        gap="32"
       >
-        <Text variant="heading-default-xl" marginBottom="32">
-          Portal administrativo
+        <Text variant="heading-default-xl">Portal administrativo</Text>
+
+        <Text variant="body-default-l" style={{ fontWeight: 600 }}>
+          Clientes
         </Text>
+
+        <Column gap="8">
+          {clients.map((c, i) => (
+            <Button
+              key={i}
+              variant={selectedClient === i ? "secondary" : "tertiary"}
+              size="m"
+              onClick={() => setSelectedClient(i)}
+            >
+              {c.client_name ?? "Cliente"}
+            </Button>
+          ))}
+        </Column>
+
         <Button
           variant="tertiary"
           size="m"
           onClick={() => {
             setStaff(null);
             setClients([]);
-            setEmail("");
-            setPassword("");
+            setSelectedClient(null);
           }}
         >
           Cerrar sesión
         </Button>
       </Column>
 
-      {/* Contenido principal */}
+      {/* CONTENIDO */}
       <Column style={{ flexGrow: 1, padding: "32px" }} gap="32">
-        <Text variant="heading-default-xl">Datos de clientes</Text>
-
-        {clients.length === 0 ? (
-          <Text>No hay registros.</Text>
+        {!clients.length || selectedClient === null ? (
+          <Text>Selecciona un cliente en la lista.</Text>
         ) : (
-          clients.map((record, idx) => {
-            // Eliminamos ID para no mostrarlo
-            const filtered = Object.entries(record).filter(
-              ([key]) => key !== "id"
-            );
-
-            return (
-              <Column
-                key={idx}
-                gap="16"
-                style={{
-                  background: "var(--surface-primary)",
-                  padding: "24px",
-                  borderRadius: "12px",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                  border: "1px solid var(--neutral-alpha-medium)",
-                }}
+          <>
+            {/* PESTAÑAS */}
+            <Row gap="16">
+              <Button
+                variant={activeTab === "info" ? "secondary" : "tertiary"}
+                onClick={() => setActiveTab("info")}
               >
-                <Text variant="heading-default-l">
-                  Ficha del cliente
-                </Text>
+                Información
+              </Button>
 
-                <Column gap="12">
-                  {filtered.map(([key, value]) => (
-                    <Row
-                      key={key}
-                      horizontal="between"
-                      gap="12"
-                      style={{
-                        paddingBottom: "8px",
-                        borderBottom: "1px solid var(--neutral-alpha-weak)",
-                      }}
-                    >
-                      <Text
-                        variant="body-default-m"
-                        style={{ fontWeight: 600 }}
+              <Button
+                variant={activeTab === "plan" ? "secondary" : "tertiary"}
+                onClick={() => setActiveTab("plan")}
+              >
+                Estado del plan
+              </Button>
+            </Row>
+
+            {/* TARJETA PRINCIPAL */}
+            <Column
+              gap="16"
+              style={{
+                background: "var(--surface-primary)",
+                padding: "24px",
+                borderRadius: "12px",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                border: "1px solid var(--neutral-alpha-medium)",
+              }}
+            >
+              {activeTab === "info" && (
+                <>
+                  <Text variant="heading-default-l">Ficha del cliente</Text>
+
+                  {Object.entries(clients[selectedClient])
+                    .filter(([key]) => key !== "id" && key !== "plan_state")
+                    .map(([key, value]) => (
+                      <Row
+                        key={key}
+                        horizontal="between"
+                        style={{
+                          paddingBottom: "8px",
+                          borderBottom: "1px solid var(--neutral-alpha-weak)",
+                        }}
                       >
-                        {key.replace(/_/g, " ")}
+                        <Text variant="body-default-m" style={{ fontWeight: 600 }}>
+                          {key.replace(/_/g, " ")}
+                        </Text>
+                        <Text variant="body-default-m" style={{ textAlign: "right" }}>
+                          {String(value)}
+                        </Text>
+                      </Row>
+                    ))}
+                </>
+              )}
+
+              {activeTab === "plan" && (
+                <>
+                  <Text variant="heading-default-l">Estado del plan</Text>
+
+                  <Column gap="16">
+                    <Row horizontal="between">
+                      <Text variant="body-default-m" style={{ fontWeight: 600 }}>
+                        Estado:
                       </Text>
 
-                      <Text
-                        variant="body-default-m"
-                        style={{ maxWidth: "500px", textAlign: "right" }}
-                      >
-                        {String(value)}
+                      <Text variant="body-default-m">
+                        {clients[selectedClient].plan_state ?? "No definido"}
                       </Text>
                     </Row>
-                  ))}
-                </Column>
-              </Column>
-            );
-          })
+
+                    <Row horizontal="between">
+                      <Text variant="body-default-m" style={{ fontWeight: 600 }}>
+                        Plan contratado:
+                      </Text>
+
+                      <Text variant="body-default-m">
+                        {clients[selectedClient].plan_status ?? "—"}
+                      </Text>
+                    </Row>
+                  </Column>
+                </>
+              )}
+            </Column>
+          </>
         )}
       </Column>
     </Row>
