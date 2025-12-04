@@ -107,15 +107,15 @@ const blog: Blog = {
 const work: Work = {
   path: "/work",
   label: "Work",
-  title: `Our Projects - ${person.name}`,
+  title: `Nuestros proyectos - ${person.name}`,
   description: `Plugins, Developments, and community experiments by ${person.name}`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Portal",
-  title: `Product gallery - ${person.name}`,
-  description: "Screens from CodeShare, Beatra, Vip Transfer Turkey, and DNZ Geri Dönüşüm.",
+  title: `Portal del Cliente - ${person.name}`,
+  description: "",
   images: siteData.gallery.map((src, index) => ({
     src,
     alt: `showcase-${index + 1}`,
