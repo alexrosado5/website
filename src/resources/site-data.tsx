@@ -27,9 +27,8 @@ const siteData = {
     headline: "Diseño de complementos y productos digitales de alto impacto para sitios web.",
     subline: (
       <>
-        <strong>PixelShield Agency</strong> develops AI-powered web plugins, 
-        enhances website performance, and provides reliable 24/7 maintenance,
-        with plans to expand into new custom plugins for all users.
+        <strong>PixelShield Agency</strong> desarrolla complementos web impulsados por IA, mejora el rendimiento
+        de los sitios web y ofrece mantenimiento 24/7, con planes de expandirse a nuevos complementos personalizados para todos los usuarios.
       </>
     ),
     featured: {
