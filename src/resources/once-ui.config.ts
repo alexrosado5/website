@@ -25,6 +25,7 @@ const routes: RoutesConfig = {
   // Enable the gallery route so that the client portal is reachable.
   "/gallery": true,
   "/github": false,
+  "/staff": true,
 };
 
 const display: DisplayConfig = {
