@@ -21,6 +21,7 @@
     "lint-staged": "^16.1.5",
     "next": "^15.3.6",
     "next-mdx-remote": "^5.0.0",
+    "ogl": "^1.0.11",
     "postgres": "^3.4.7",
     "react": "19.0.0",
     "react-dom": "19.0.0",

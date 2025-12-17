@@ -6,7 +6,7 @@
 // specific defaults (e.g. `body-default-s`, `heading-default-xl`).  To
 // preserve the bold weight for certain fields we also supply a custom
 // `fontWeight` style where appropriate.
-
+import TextType from "@/components/TextType";
 import React, { useState } from "react";
 import {
   Column,
@@ -517,9 +517,10 @@ export default function ClientPortal() {
   return (
     <Flex horizontal="center" vertical="center" paddingTop="32">
       <Column gap="16" maxWidth="s" fillWidth>
-        <Text variant="heading-default-xl" align="center">
-          Portal para clientes
-        </Text>
+      <Text variant="heading-default-xl" align="center">
+        <TextType text="Bienvenid@!" />
+      </Text>
+
 
         <form onSubmit={handleLogin}>
           <Column gap="16" fillWidth>
