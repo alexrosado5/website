@@ -2,18 +2,21 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  Column,
-  Row,
-  Flex,
-  Input,
-  Button,
-  Text,
-} from "@once-ui-system/core";
+import { Column, Row, Flex, Input, Button, Text } from "@once-ui-system/core";
 
 // Tipado opcional para un registro de cliente administrativo
 interface AdminClientRecord {
   [key: string]: any;
+}
+
+interface Lead {
+  id: string;
+  created_at: string;
+  plan: string;
+  name: string;
+  email: string;
+  phone: string;
+  company?: string;
 }
 
 export default function StaffPortal() {
@@ -24,6 +27,7 @@ export default function StaffPortal() {
   const [selectedClient, setSelectedClient] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<"info" | "plan">("info");
   const [error, setError] = useState<string | null>(null);
+  const [leads, setLeads] = useState<Lead[]>([]);
 
   // Manejo de login
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -55,6 +59,7 @@ export default function StaffPortal() {
   // Cargar clientes
   useEffect(() => {
     if (!staff) return;
+
     const fetchClients = async () => {
       try {
         const res = await fetch("/api/admin-client-info");
@@ -66,7 +71,21 @@ export default function StaffPortal() {
         console.error("Error al cargar datos administrativos:", e);
       }
     };
+
+    const fetchLeads = async () => {
+      try {
+        const res = await fetch("/api/leads");
+        const json = await res.json();
+        if (json.ok) {
+          setLeads(json.data);
+        }
+      } catch (e) {
+        console.error("Error al cargar solicitudes:", e);
+      }
+    };
+
     fetchClients();
+    fetchLeads();
   }, [staff]);
 
   // Si no hay login → mostrar login
@@ -138,11 +157,39 @@ export default function StaffPortal() {
               key={i}
               variant={selectedClient === i ? "secondary" : "tertiary"}
               size="m"
-              onClick={() => setSelectedClient(i)}
+              onClick={() => {
+                setSelectedClient(i);
+                setActiveTab("info");
+              }}
             >
               {c.client_name ?? "Cliente"}
             </Button>
           ))}
+        </Column>
+
+        <Text variant="body-default-l" style={{ fontWeight: 600, marginTop: "16px" }}>
+          Solicitudes
+        </Text>
+
+        <Column gap="8">
+          {leads.length === 0 ? (
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              No hay solicitudes.
+            </Text>
+          ) : (
+            leads.map((l) => (
+              <Button
+                key={l.id}
+                variant="tertiary"
+                size="m"
+                onClick={() => {
+                  setSelectedClient(null);
+                }}
+              >
+                {l.name} · {l.plan}
+              </Button>
+            ))
+          )}
         </Column>
 
         <Button
@@ -152,6 +199,7 @@ export default function StaffPortal() {
             setStaff(null);
             setClients([]);
             setSelectedClient(null);
+            setLeads([]);
           }}
         >
           Cerrar sesión
@@ -161,7 +209,67 @@ export default function StaffPortal() {
       {/* CONTENIDO */}
       <Column style={{ flexGrow: 1, padding: "32px" }} gap="32">
         {!clients.length || selectedClient === null ? (
-          <Text>Selecciona un cliente en la lista.</Text>
+          <>
+            <Text variant="heading-default-l">Solicitudes</Text>
+
+            {leads.length === 0 ? (
+              <Text>No hay solicitudes todavía.</Text>
+            ) : (
+              <Column gap="12">
+                {leads.map((l) => (
+                  <Column
+                    key={l.id}
+                    gap="8"
+                    style={{
+                      background: "var(--surface-primary)",
+                      padding: "16px",
+                      borderRadius: "12px",
+                      border: "1px solid var(--neutral-alpha-medium)",
+                    }}
+                  >
+                    <Row horizontal="between">
+                      <Text variant="body-default-m" style={{ fontWeight: 600 }}>
+                        {l.name}
+                      </Text>
+                      <Text variant="body-default-s" onBackground="neutral-weak">
+                        {new Date(l.created_at).toLocaleString("es-ES")}
+                      </Text>
+                    </Row>
+
+                    <Row horizontal="between">
+                      <Text variant="body-default-s" style={{ fontWeight: 600 }}>
+                        Plan
+                      </Text>
+                      <Text variant="body-default-s">{l.plan}</Text>
+                    </Row>
+
+                    <Row horizontal="between">
+                      <Text variant="body-default-s" style={{ fontWeight: 600 }}>
+                        Email
+                      </Text>
+                      <Text variant="body-default-s">{l.email}</Text>
+                    </Row>
+
+                    <Row horizontal="between">
+                      <Text variant="body-default-s" style={{ fontWeight: 600 }}>
+                        Teléfono
+                      </Text>
+                      <Text variant="body-default-s">{l.phone}</Text>
+                    </Row>
+
+                    {l.company && (
+                      <Row horizontal="between">
+                        <Text variant="body-default-s" style={{ fontWeight: 600 }}>
+                          Empresa
+                        </Text>
+                        <Text variant="body-default-s">{l.company}</Text>
+                      </Row>
+                    )}
+                  </Column>
+                ))}
+              </Column>
+            )}
+          </>
         ) : (
           <>
             {/* PESTAÑAS */}

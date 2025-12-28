@@ -26,6 +26,8 @@ const routes: RoutesConfig = {
   "/gallery": true,
   "/github": false,
   "/staff": true,
+  "/pricing": true,
+  "/order": true,
 };
 
 const display: DisplayConfig = {

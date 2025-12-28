@@ -167,16 +167,19 @@ export default function Home() {
 
       {/* TEXTO CIRCULAR FIJO */}
       <div
-        style={{
-          position: "fixed",
-          bottom: "2rem",
-          right: "2rem",
-          zIndex: 20,
-          pointerEvents: "none",
-        }}
-      >
-        <CircularText text="PIXELSHIELD AGENCY • AI • AUTOMATION • " />
-      </div>
+      style={{
+        position: "fixed",
+        bottom: "1rem",
+        right: "1rem",
+        zIndex: 20,
+        pointerEvents: "none",
+        transform: "scale(0.70)",
+        opacity: 0.70,
+      }}
+    >
+      <CircularText text="PIXELSHIELD • AI • " />
+    </div>
+
     </>
   );
 }
